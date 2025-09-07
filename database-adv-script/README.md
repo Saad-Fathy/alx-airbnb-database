@@ -18,7 +18,7 @@ File: aggregations_and_window_functions.sql
 Contains two SQL queries demonstrating aggregation and window functions:
 
 Aggregation Query: Uses COUNT and GROUP BY to find the total number of bookings made by each user, including users with zero bookings.
-Window Function Query: Uses RANK to assign a rank to properties based on the total number of bookings, with tied properties receiving the same rank and the highest booked properties ranked first.
+Window Function Query: Uses ROW_NUMBER to assign a unique sequential rank to properties based on the total number of bookings, with the highest booked properties ranked first.
 
 How to Use
 
