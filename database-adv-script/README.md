@@ -29,7 +29,7 @@ Index on bookings.booking_date: Optimizes potential date-range queries.
 EXPLAIN ANALYZE commands: Measure the performance of a query from aggregations_and_window_functions.sql before and after creating the idx_bookings_property_id index.
 
 File: perfomance.sql
-Contains a complex query retrieving bookings with user, property, and payment details, an index creation command for bookings.payment_id, and a refactored query with EXPLAIN commands to analyze performance before and after optimization.
+Contains a complex query retrieving bookings with user, property, and payment details, including a WHERE clause with AND to filter recent bookings, an index creation command for bookings.payment_id, and a refactored query with EXPLAIN commands to analyze performance before and after optimization.
 File: index_performance.md
 Documents the performance analysis of a query before and after adding an index on bookings.property_id, referencing the EXPLAIN ANALYZE commands in database_index.sql and providing sample query plans and execution times.
 File: optimization_report.md

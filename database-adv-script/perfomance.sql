@@ -18,7 +18,10 @@ INNER JOIN
 INNER JOIN 
     properties p ON b.property_id = p.property_id
 LEFT JOIN 
-    payments pay ON b.payment_id = pay.payment_id;
+    payments pay ON b.payment_id = pay.payment_id
+WHERE 
+    b.booking_date >= '2024-09-07'
+    AND b.user_id IS NOT NULL;
 
 -- Create index to optimize LEFT JOIN on payments
 CREATE INDEX idx_bookings_payment_id ON bookings (payment_id);
