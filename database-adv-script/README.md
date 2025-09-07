@@ -38,18 +38,22 @@ File: partitioning.sql
 Contains commands to partition the bookings table by range on booking_date (partitions for 2023, 2024, 2025, and a default partition), create indexes on each partition, and an EXPLAIN ANALYZE command to test performance of a date-range query on the partitioned table.
 File: partition_performance.md
 Documents the performance analysis of a date-range query on the bookings table before and after partitioning, including sample EXPLAIN ANALYZE outputs and observed improvements.
+File: monitor_and_refine.sql
+Contains index creation commands for users.user_id and properties.property_id, NOT NULL constraints for bookings partitions, and refined versions of three frequently used queries with EXPLAIN ANALYZE to monitor and improve performance.
+File: performance_monitoring.md
+Documents the performance analysis of three frequently used queries, identifying bottlenecks, implementing optimizations (indexes, query refinements, schema adjustments), and reporting improvements using EXPLAIN ANALYZE.
 How to Use
 
 Ensure access to the Airbnb database with tables: users, bookings, properties, payments, and reviews.
-Run the queries in joins_queries.sql, subqueries.sql, aggregations_and_window_functions.sql, and perfomance.sql using a SQL client (e.g., PostgreSQL).
-Apply the indexes in database_index.sql and perfomance.sql, and set up partitioning in partitioning.sql.
-Analyze performance using index_performance.md, optimization_report.md, and partition_performance.md as guides.
-Verify the output to ensure correct join, subquery, aggregation, window function, index, and partitioning behavior.
+Run the queries in joins_queries.sql, subqueries.sql, aggregations_and_window_functions.sql, perfomance.sql, and monitor_and_refine.sql using a SQL client (e.g., PostgreSQL).
+Apply the indexes in database_index.sql, perfomance.sql, and monitor_and_refine.sql. Set up partitioning in partitioning.sql.
+Analyze performance using index_performance.md, optimization_report.md, partition_performance.md, and performance_monitoring.md as guides.
+Verify the output to ensure correct join, subquery, aggregation, window function, index, partitioning, and performance behavior.
 
 Assumptions
 
 users: Contains user_id (primary key), name.
-bookings: Contains booking_id (primary key), user_id (foreign key), property_id (foreign key), booking_date, payment_id (foreign key).
+bookings: Contains booking_id (primary key), user_id (foreign key, NOT NULL), property_id (foreign key, NOT NULL), booking_date, payment_id (foreign key).
 properties: Contains property_id (primary key), name, location.
 payments: Contains payment_id (primary key), booking_id (foreign key), amount, payment_date.
 reviews: Contains review_id (primary key), property_id (foreign key), user_id (foreign key), rating (numeric, e.g., 1.0 to 5.0).
@@ -58,4 +62,4 @@ Submission
 
 Repository: alx-airbnb-database
 Directory: database-adv-script
-Files: joins_queries.sql, subqueries.sql, aggregations_and_window_functions.sql, database_index.sql, index_performance.md, perfomance.sql, optimization_report.md, partitioning.sql, partition_performance.md, README.md
+Files: joins_queries.sql, subqueries.sql, aggregations_and_window_functions.sql, database_index.sql, index_performance.md, perfomance.sql, optimization_report.md, partitioning.sql, partition_performance.md, monitor_and_refine.sql, performance_monitoring.md, README.md
