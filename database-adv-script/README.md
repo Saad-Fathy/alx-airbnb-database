@@ -20,21 +20,31 @@ Contains two SQL queries demonstrating aggregation and window functions:
 Aggregation Query: Uses COUNT and GROUP BY to find the total number of bookings made by each user, including users with zero bookings.
 Window Function Query: Uses ROW_NUMBER to assign a unique sequential rank to properties based on the total number of bookings, with the highest booked properties ranked first.
 
+File: database_index.sql
+Contains three CREATE INDEX commands to optimize query performance:
+
+Index on bookings.user_id: Optimizes JOINs and WHERE clauses involving user_id.
+Index on bookings.property_id: Optimizes JOINs and GROUP BY clauses involving property_id.
+Index on bookings.booking_date: Optimizes potential date-range queries.
+
+File: index_performance.md
+Documents the performance analysis of a query before and after adding an index on bookings.property_id, using EXPLAIN to compare query plans and demonstrate performance improvements.
 How to Use
 
 Ensure access to the Airbnb database with tables: users, bookings, properties, and reviews.
 Run the queries in joins_queries.sql, subqueries.sql, and aggregations_and_window_functions.sql using a SQL client (e.g., MySQL, PostgreSQL).
-Verify the output to ensure correct join, subquery, aggregation, and window function behavior.
+Apply the indexes in database_index.sql and analyze performance using index_performance.md as a guide.
+Verify the output to ensure correct join, subquery, aggregation, window function, and index behavior.
 
 Assumptions
 
-users: Contains user_id, name.
-bookings: Contains booking_id, user_id, property_id, booking_date.
-properties: Contains property_id, name, location.
-reviews: Contains review_id, property_id, user_id, rating (numeric, e.g., 1.0 to 5.0).
+users: Contains user_id (primary key), name.
+bookings: Contains booking_id (primary key), user_id (foreign key), property_id (foreign key), booking_date.
+properties: Contains property_id (primary key), name, location.
+reviews: Contains review_id (primary key), property_id (foreign key), user_id (foreign key), rating (numeric, e.g., 1.0 to 5.0).
 
 Submission
 
 Repository: alx-airbnb-database
 Directory: database-adv-script
-Files: joins_queries.sql, subqueries.sql, aggregations_and_window_functions.sql, README.md
+Files: joins_queries.sql, subqueries.sql, aggregations_and_window_functions.sql, database_index.sql, index_performance.md, README.md
