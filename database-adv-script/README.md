@@ -14,11 +14,17 @@ Contains two SQL queries demonstrating subquery techniques:
 Non-Correlated Subquery: Retrieves all properties with an average rating greater than 4.0, using a subquery to compute the average rating per property.
 Correlated Subquery: Identifies users who have made more than 3 bookings, using a subquery that counts bookings per user.
 
+File: aggregations_and_window_functions.sql
+Contains two SQL queries demonstrating aggregation and window functions:
+
+Aggregation Query: Uses COUNT and GROUP BY to find the total number of bookings made by each user, including users with zero bookings.
+Window Function Query: Uses RANK to rank properties based on the total number of bookings, with the highest booked properties ranked first.
+
 How to Use
 
 Ensure access to the Airbnb database with tables: users, bookings, properties, and reviews.
-Run the queries in joins_queries.sql and subqueries.sql using a SQL client (e.g., MySQL, PostgreSQL).
-Verify the output to ensure correct join and subquery behavior.
+Run the queries in joins_queries.sql, subqueries.sql, and aggregations_and_window_functions.sql using a SQL client (e.g., MySQL, PostgreSQL).
+Verify the output to ensure correct join, subquery, aggregation, and window function behavior.
 
 Assumptions
 
@@ -31,4 +37,4 @@ Submission
 
 Repository: alx-airbnb-database
 Directory: database-adv-script
-Files: joins_queries.sql, subqueries.sql, README.md
+Files: joins_queries.sql, subqueries.sql, aggregations_and_window_functions.sql, README.md
