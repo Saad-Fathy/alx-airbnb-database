@@ -34,12 +34,17 @@ File: index_performance.md
 Documents the performance analysis of a query before and after adding an index on bookings.property_id, referencing the EXPLAIN ANALYZE commands in database_index.sql and providing sample query plans and execution times.
 File: optimization_report.md
 Documents the performance analysis and optimization of a complex query in perfomance.sql, including EXPLAIN outputs and the impact of adding an index on bookings.payment_id.
+File: partitioning.sql
+Contains commands to partition the bookings table by range on booking_date (partitions for 2023, 2024, 2025, and a default partition), create indexes on each partition, and an EXPLAIN ANALYZE command to test performance of a date-range query on the partitioned table.
+File: partition_performance.md
+Documents the performance analysis of a date-range query on the bookings table before and after partitioning, including sample EXPLAIN ANALYZE outputs and observed improvements.
 How to Use
 
 Ensure access to the Airbnb database with tables: users, bookings, properties, payments, and reviews.
-Run the queries in joins_queries.sql, subqueries.sql, aggregations_and_window_functions.sql, and perfomance.sql using a SQL client (e.g., MySQL, PostgreSQL).
-Apply the indexes in database_index.sql and perfomance.sql. Analyze performance using index_performance.md and optimization_report.md as guides.
-Verify the output to ensure correct join, subquery, aggregation, window function, and index behavior.
+Run the queries in joins_queries.sql, subqueries.sql, aggregations_and_window_functions.sql, and perfomance.sql using a SQL client (e.g., PostgreSQL).
+Apply the indexes in database_index.sql and perfomance.sql, and set up partitioning in partitioning.sql.
+Analyze performance using index_performance.md, optimization_report.md, and partition_performance.md as guides.
+Verify the output to ensure correct join, subquery, aggregation, window function, index, and partitioning behavior.
 
 Assumptions
 
@@ -53,4 +58,4 @@ Submission
 
 Repository: alx-airbnb-database
 Directory: database-adv-script
-Files: joins_queries.sql, subqueries.sql, aggregations_and_window_functions.sql, database_index.sql, index_performance.md, perfomance.sql, optimization_report.md, README.md
+Files: joins_queries.sql, subqueries.sql, aggregations_and_window_functions.sql, database_index.sql, index_performance.md, perfomance.sql, optimization_report.md, partitioning.sql, partition_performance.md, README.md
