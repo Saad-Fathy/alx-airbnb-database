@@ -28,24 +28,29 @@ Index on bookings.property_id: Optimizes JOINs and GROUP BY clauses involving pr
 Index on bookings.booking_date: Optimizes potential date-range queries.
 EXPLAIN ANALYZE commands: Measure the performance of a query from aggregations_and_window_functions.sql before and after creating the idx_bookings_property_id index.
 
+File: perfomance.sql
+Contains a complex query retrieving bookings with user, property, and payment details, an index creation command for bookings.payment_id, and a refactored query with EXPLAIN commands to analyze performance before and after optimization.
 File: index_performance.md
 Documents the performance analysis of a query before and after adding an index on bookings.property_id, referencing the EXPLAIN ANALYZE commands in database_index.sql and providing sample query plans and execution times.
+File: optimization_report.md
+Documents the performance analysis and optimization of a complex query in perfomance.sql, including EXPLAIN outputs and the impact of adding an index on bookings.payment_id.
 How to Use
 
-Ensure access to the Airbnb database with tables: users, bookings, properties, and reviews.
-Run the queries in joins_queries.sql, subqueries.sql, and aggregations_and_window_functions.sql using a SQL client (e.g., MySQL, PostgreSQL).
-Apply the indexes and run the EXPLAIN ANALYZE commands in database_index.sql to measure performance. Refer to index_performance.md for sample analysis.
+Ensure access to the Airbnb database with tables: users, bookings, properties, payments, and reviews.
+Run the queries in joins_queries.sql, subqueries.sql, aggregations_and_window_functions.sql, and perfomance.sql using a SQL client (e.g., MySQL, PostgreSQL).
+Apply the indexes in database_index.sql and perfomance.sql. Analyze performance using index_performance.md and optimization_report.md as guides.
 Verify the output to ensure correct join, subquery, aggregation, window function, and index behavior.
 
 Assumptions
 
 users: Contains user_id (primary key), name.
-bookings: Contains booking_id (primary key), user_id (foreign key), property_id (foreign key), booking_date.
+bookings: Contains booking_id (primary key), user_id (foreign key), property_id (foreign key), booking_date, payment_id (foreign key).
 properties: Contains property_id (primary key), name, location.
+payments: Contains payment_id (primary key), booking_id (foreign key), amount, payment_date.
 reviews: Contains review_id (primary key), property_id (foreign key), user_id (foreign key), rating (numeric, e.g., 1.0 to 5.0).
 
 Submission
 
 Repository: alx-airbnb-database
 Directory: database-adv-script
-Files: joins_queries.sql, subqueries.sql, aggregations_and_window_functions.sql, database_index.sql, index_performance.md, README.md
+Files: joins_queries.sql, subqueries.sql, aggregations_and_window_functions.sql, database_index.sql, index_performance.md, perfomance.sql, optimization_report.md, README.md
