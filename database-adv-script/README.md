@@ -21,19 +21,20 @@ Aggregation Query: Uses COUNT and GROUP BY to find the total number of bookings 
 Window Function Query: Uses ROW_NUMBER to assign a unique sequential rank to properties based on the total number of bookings, with the highest booked properties ranked first.
 
 File: database_index.sql
-Contains three CREATE INDEX commands to optimize query performance:
+Contains three CREATE INDEX commands to optimize query performance and two EXPLAIN ANALYZE commands to measure the performance of a query before and after indexing:
 
 Index on bookings.user_id: Optimizes JOINs and WHERE clauses involving user_id.
 Index on bookings.property_id: Optimizes JOINs and GROUP BY clauses involving property_id.
 Index on bookings.booking_date: Optimizes potential date-range queries.
+EXPLAIN ANALYZE commands: Measure the performance of a query from aggregations_and_window_functions.sql before and after creating the idx_bookings_property_id index.
 
 File: index_performance.md
-Documents the performance analysis of a query before and after adding an index on bookings.property_id, using EXPLAIN to compare query plans and demonstrate performance improvements.
+Documents the performance analysis of a query before and after adding an index on bookings.property_id, referencing the EXPLAIN ANALYZE commands in database_index.sql and providing sample query plans and execution times.
 How to Use
 
 Ensure access to the Airbnb database with tables: users, bookings, properties, and reviews.
 Run the queries in joins_queries.sql, subqueries.sql, and aggregations_and_window_functions.sql using a SQL client (e.g., MySQL, PostgreSQL).
-Apply the indexes in database_index.sql and analyze performance using index_performance.md as a guide.
+Apply the indexes and run the EXPLAIN ANALYZE commands in database_index.sql to measure performance. Refer to index_performance.md for sample analysis.
 Verify the output to ensure correct join, subquery, aggregation, window function, and index behavior.
 
 Assumptions
